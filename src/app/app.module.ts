@@ -34,6 +34,8 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
 
+import { SxwCommonModule } from '@sxw/common';
+
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? []
   : [];
@@ -79,6 +81,7 @@ const appRoutes: Routes = [
     FuseThemeOptionsModule,
 
     // App modules
+    SxwCommonModule,
     LayoutModule,
     SampleModule
   ],
