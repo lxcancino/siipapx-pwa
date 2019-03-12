@@ -11,23 +11,12 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "paths": {
-      "@fuse": [
-        "@fuse/"
-      ],
-      "sxw-common": [
-        "dist/sxw-common"
-      ],
-      "sxw-common/*": [
-        "dist/sxw-common/*"
-      ]
+      "@fuse": ["@fuse/"],
+      "sx-core": ["dist/sx-core"],
+      "sx-core/*": ["dist/sx-core/*"]
     },
     "target": "es5",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
   }
 }

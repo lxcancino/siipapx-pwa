@@ -4,21 +4,28 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 
 import { locale as english } from './i18n/en';
 import { locale as turkish } from './i18n/tr';
+import { Sucursal } from '@sx/core';
 
 @Component({
-    selector: 'sample',
-    templateUrl: './sample.component.html',
-    styleUrls: ['./sample.component.scss']
+  selector: 'sample',
+  templateUrl: './sample.component.html',
+  styleUrls: ['./sample.component.scss']
 })
 export class SampleComponent {
-    /**
-     * Constructor
-     *
-     * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
-     */
-    constructor(
-        private _fuseTranslationLoaderService: FuseTranslationLoaderService
-    ) {
-        this._fuseTranslationLoaderService.loadTranslations(english, turkish);
-    }
+  sucursal: Sucursal = {
+    id: '10',
+    nombre: 'OFICINAS',
+    clave: '10'
+  };
+
+  /**
+   * Constructor
+   *
+   * @param {FuseTranslationLoaderService} _fuseTranslationLoaderService
+   */
+  constructor(
+    private _fuseTranslationLoaderService: FuseTranslationLoaderService
+  ) {
+    this._fuseTranslationLoaderService.loadTranslations(english, turkish);
+  }
 }

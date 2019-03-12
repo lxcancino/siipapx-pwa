@@ -136,6 +136,44 @@
           }
         }
       }
+    },
+    "sx-core": {
+      "root": "projects/sx-core",
+      "sourceRoot": "projects/sx-core/src",
+      "projectType": "library",
+      "prefix": "sx-core",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sx-core/tsconfig.lib.json",
+            "project": "projects/sx-core/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sx-core/src/test.ts",
+            "tsConfig": "projects/sx-core/tsconfig.spec.json",
+            "karmaConfig": "projects/sx-core/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sx-core/tsconfig.lib.json",
+              "projects/sx-core/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
     }
   },
   "defaultProject": "fuse"

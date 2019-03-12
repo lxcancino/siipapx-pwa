@@ -33,6 +33,7 @@ import { fuseConfig } from 'app/fuse-config';
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
+import { LoginModule } from './main/login/login.module';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? []
@@ -75,7 +76,8 @@ const appRoutes: Routes = [];
 
     // App modules
     LayoutModule,
-    SampleModule
+    SampleModule,
+    LoginModule
   ],
   bootstrap: [AppComponent]
 })
