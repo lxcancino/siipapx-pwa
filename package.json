@@ -91,7 +91,5 @@
     "typescript": "3.2.2",
     "webpack-bundle-analyzer": "3.0.3"
   },
-  "optionalDependencies": {
-    "@sxw/common": "file:dist/sxw-common"
-  }
+  "optionalDependencies": {}
 }

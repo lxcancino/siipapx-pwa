@@ -5,7 +5,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { SampleComponent } from './sample.component';
-import { SxwCommonModule } from '@sxw/common';
 
 const routes = [
   {
@@ -16,14 +15,7 @@ const routes = [
 
 @NgModule({
   declarations: [SampleComponent],
-  imports: [
-    RouterModule.forChild(routes),
-
-    TranslateModule,
-
-    FuseSharedModule,
-    SxwCommonModule
-  ],
+  imports: [RouterModule.forChild(routes), TranslateModule, FuseSharedModule],
   exports: [SampleComponent]
 })
 export class SampleModule {}
