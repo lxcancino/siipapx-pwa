@@ -22,6 +22,7 @@ import {
   FuseSidebarModule,
   FuseThemeOptionsModule
 } from '@fuse/components';
+
 import { reducers, effects, CustomSerializer } from './store';
 // Not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -34,6 +35,9 @@ import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
 import { LoginModule } from './main/login/login.module';
+
+import { SxAuthModule } from 'sx-auth';
+import { SxCoreModule } from 'sx-core';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? []
@@ -73,6 +77,9 @@ const appRoutes: Routes = [];
     FuseSharedModule,
     FuseSidebarModule,
     FuseThemeOptionsModule,
+
+    SxAuthModule,
+    SxCoreModule,
 
     // App modules
     LayoutModule,

@@ -4,7 +4,6 @@ import { FuseTranslationLoaderService } from '@fuse/services/translation-loader.
 
 import { locale as english } from './i18n/en';
 import { locale as turkish } from './i18n/tr';
-import { Sucursal } from '@sx/core';
 
 @Component({
   selector: 'sample',
@@ -12,12 +11,6 @@ import { Sucursal } from '@sx/core';
   styleUrls: ['./sample.component.scss']
 })
 export class SampleComponent {
-  sucursal: Sucursal = {
-    id: '10',
-    nombre: 'OFICINAS',
-    clave: '10'
-  };
-
   /**
    * Constructor
    *
