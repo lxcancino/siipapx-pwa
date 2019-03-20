@@ -14,8 +14,8 @@
       "@fuse": ["@fuse/"],
       "sx-core": ["dist/sx-core"],
       "sx-core/*": ["dist/sx-core/*"],
-      "sx-auth": ["../../dist/sx-auth"],
-      "sx-auth/*": ["../../dist/sx-auth/*"]
+      "sx-auth": ["dist/sx-auth"],
+      "sx-auth/*": ["dist/sx-auth/*"]
     },
     "target": "es5",
     "typeRoots": ["node_modules/@types"],

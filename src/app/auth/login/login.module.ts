@@ -11,6 +11,7 @@ import {
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { LoginComponent } from './login.component';
+import { CovalentLoadingModule } from '@covalent/core';
 
 const routes = [
   {
@@ -29,7 +30,7 @@ const routes = [
     MatFormFieldModule,
     MatIconModule,
     MatInputModule,
-
+    CovalentLoadingModule,
     FuseSharedModule
   ]
 })

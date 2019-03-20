@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule, Routes } from '@angular/router';
+
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatButtonModule, MatIconModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
@@ -14,6 +14,10 @@ import {
 } from '@ngrx/router-store';
 import { StoreModule, MetaReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+
+import { AppRoutingModule } from './app-routing.module';
+
+import { AuthModule } from './auth/auth.module';
 
 import { FuseModule } from '@fuse/fuse.module';
 import { FuseSharedModule } from '@fuse/shared.module';
@@ -29,21 +33,21 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { environment } from 'environments/environment.prod';
 
+import { ConfigService } from './config/config.service';
+
 import { fuseConfig } from 'app/fuse-config';
 
 import { AppComponent } from 'app/app.component';
 import { LayoutModule } from 'app/layout/layout.module';
 import { SampleModule } from 'app/main/sample/sample.module';
-import { LoginModule } from './main/login/login.module';
-
-import { SxAuthModule } from 'sx-auth';
-import { SxCoreModule } from 'sx-core';
 
 export const metaReducers: MetaReducer<any>[] = !environment.production
   ? []
   : [];
 
-const appRoutes: Routes = [];
+export function onAppInit(configService: ConfigService): () => Promise<any> {
+  return () => configService.load();
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -51,16 +55,18 @@ const appRoutes: Routes = [];
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
 
     // Ngrx Store configuration
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreDevtoolsModule.instrument({
-      name: 'SX-Contabilidad Dev Tools',
+      name: 'SIIPAPX CONTA Dev Tools',
       logOnly: environment.production
     }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
+
+    AuthModule.forRoot(),
 
     TranslateModule.forRoot(),
 
@@ -78,13 +84,22 @@ const appRoutes: Routes = [];
     FuseSidebarModule,
     FuseThemeOptionsModule,
 
-    SxAuthModule,
-    SxCoreModule,
-
     // App modules
     LayoutModule,
-    SampleModule,
-    LoginModule
+    SampleModule
+  ],
+  providers: [
+    ConfigService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: onAppInit,
+      multi: true,
+      deps: [ConfigService]
+    },
+    {
+      provide: RouterStateSerializer,
+      useClass: CustomSerializer
+    }
   ],
   bootstrap: [AppComponent]
 })
